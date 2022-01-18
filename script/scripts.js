@@ -68,24 +68,28 @@ const displayCart = () => {
     total += element.price;
   });
 
+  document.getElementById("overlay").style = "display:block";
+
   document.getElementById("mycart").style = "display:flex";
   console.log(myCart);
+
   document.getElementById("cartTable").innerHTML = myCart
     .map(
       (val) =>
         `<tr>
   <td><img src="${val.img}" alt=""></td>
   <td>${val.desc}</td>
-  <td>${val.price}</td>
+  <td>$${val.price}</td>
 </tr>`
     )
-    .join('');
+    .join("");
 
-    document.getElementById("cartTable").innerHTML += `<tr><td></td><td>TOTAL</td><td>${total}</td></tr>`
-
-
+  document.getElementById(
+    "cartTable"
+  ).innerHTML += `<tr id="total-row"><td></td><td>total</td><td>$${total}</td></tr>`;
 };
 
 const closeCart = () => {
   document.getElementById("mycart").style = "display:none";
+  document.getElementById("overlay").style = "display:none";
 };

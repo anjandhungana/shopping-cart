@@ -32,7 +32,30 @@ nav{
     color:white;
     text-transform: uppercase;
     margin:0 15px;
-    cursor: pointer;
+    position:relative;
+}
+
+.navlinks li:not(:last-child):hover{
+    cursor:pointer;
+}
+
+.navlinks li:last-child:hover{
+    cursor:default;
+}
+
+.navlinks li:not(:last-child)::after{
+    content:'';
+    height:1px;
+    position:absolute;
+    width:0;
+    bottom:-5px;
+    left:0;
+    background-color:white;
+    transition:0.5s ease;
+}
+
+.navlinks li:hover::after{
+    width:100%;
 }
 
 .item-container{
@@ -108,6 +131,14 @@ nav{
     transform:scale(95%);
 }
 
+#overlay{
+    height:100vh;
+    width:100%;
+    background: rgba(0,0,0,0.8);
+    position:absolute; 
+    display: none;
+}
+
 #mycart{
     width:80%;
     position:absolute;
@@ -119,12 +150,17 @@ nav{
     flex-direction: column;
     background-color: white;
     padding:20px;
+    z-index:3;
 }
 
 #mycart h3{
     text-align: right;
     margin-right:20px;
     cursor: pointer;
+}
+
+#mycart h1{
+    text-align: center;
 }
 
 .cart-item{
@@ -145,3 +181,9 @@ nav{
 #cart-items-list table tr td img{
     height:100px;
 }
+
+#total-row{
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
