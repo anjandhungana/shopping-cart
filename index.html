@@ -14,12 +14,29 @@
     />
   </head>
   <body>
+    <div id="mycart">
+        <h3 onclick="closeCart()">X</h3>
+        <h1>Shopping Cart</h1>
+        <div id="cart-items-list">
+            <!-- <div class="cart-item">
+                <img src="./assets/product-img/shoes1.jpg" alt="">
+                <p>Jordan</p>
+                <p>$900</p>
+                <p>quantity</p>
+            </div> -->
+            <table id="cartTable">
+                
+               
+            </table>
+        </div>
+  
+    </div>
     <nav>
       <img src="./assets/logo2.png" class="logo" alt="" onclick="displayItems()"/>
       <ul class="navlinks">
         <li>Home</li>
         <li>About</li>
-        <li>My Cart</li>
+        <li onclick="displayCart()">My Cart</li>
         <li><p id="itemCount"></p></li>
       </ul>
     </nav>

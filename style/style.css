@@ -32,6 +32,7 @@ nav{
     color:white;
     text-transform: uppercase;
     margin:0 15px;
+    cursor: pointer;
 }
 
 .item-container{
@@ -47,7 +48,7 @@ nav{
     background-color: #333;
     border-radius:10px;
     /* overflow: hidden; */
-    /* margin:20px; */
+    margin:20px;
     display: flex;
     flex-direction: column;
 }
@@ -105,4 +106,42 @@ nav{
 
 .item-description button:active{
     transform:scale(95%);
+}
+
+#mycart{
+    width:80%;
+    position:absolute;
+    margin:auto;
+    min-height: 80vh;
+    left:0;right:0;top:20px;
+    border-radius:30px;
+    display:none;
+    flex-direction: column;
+    background-color: white;
+    padding:20px;
+}
+
+#mycart h3{
+    text-align: right;
+    margin-right:20px;
+    cursor: pointer;
+}
+
+.cart-item{
+    display:flex;
+    justify-content: space-evenly;
+    text-align: center;
+}
+
+.cart-item img{
+    height:100px;
+}
+
+
+#cart-items-list table{
+    width:100%;
+}
+
+#cart-items-list table tr td img{
+    height:100px;
 }
