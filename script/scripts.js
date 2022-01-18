@@ -79,7 +79,10 @@ const displayCart = () => {
   <td>${val.price}</td>
 </tr>`
     )
-    .join();
+    .join('');
+
+    document.getElementById("cartTable").innerHTML += `<tr><td></td><td>TOTAL</td><td>${total}</td></tr>`
+
 
 };
 
