@@ -84,18 +84,13 @@ const displayCart = () => {
   document.getElementById("overlay").style = "display:block";
 
   document.getElementById("mycart").style = "display:flex";
-  console.log(myCart);
+  console.log(myCart.length);
 
   //
-  displayTable();
-  
-};
 
-//cart tables
-const displayTable = ()=>{
-  if (myCart.length > 0) {
-    document.getElementById("cartTable").innerHTML =
-      `<tr><th>Photo</th><th>Item</th><th>Quantity</th><th>Rate</th><th>Total</th> </tr>` +
+  if (myCart.length>0) {
+    document.getElementById("cart-items-list").innerHTML =
+      `<table id="cartTable"><tr><th>Photo</th><th>Item</th><th>Quantity</th><th>Rate</th><th>Total</th> </tr>` +
       myCart
         .map(
           (val) =>
@@ -113,18 +108,23 @@ const displayTable = ()=>{
 
     document.getElementById(
       "cartTable"
-    ).innerHTML += `<tr id="total-row"><td></td><td>total</td><td>$${total}</td></tr>`;
-  } else {
-    document.getElementById("cart-items-list").innerHTML = "Nothing to show";
+    ).innerHTML += `<tr id="total-row"><td></td><td>total</td><td>$${total}</td></tr></table>`;
+    document.querySelector('#mycart h1').innerHTML = 'Your Cart';
+
+  } 
+  else {
+    document.querySelector('#mycart h1').innerHTML = 'Your Cart is Empty'
+    document.getElementById("cart-items-list").innerHTML = "<img src='./assets/cart-empty.png' id='empty-cart'/><button id='goto-shop-btn' onclick='closeCart()'>Go to the Shop</button>";
+
   }
-}
+};
+
+//
 
 const closeCart = () => {
   document.getElementById("mycart").style = "display:none";
   document.getElementById("overlay").style = "display:none";
 };
-
-
 
 // increase decrease count
 

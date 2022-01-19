@@ -3,6 +3,9 @@
     font-family: 'Lato', sans-serif;
 }
 
+.d-none{
+    display:none;
+}
 
 body{
     margin:0;
@@ -125,7 +128,7 @@ nav{
     text-transform: uppercase;
     color:#333;
     width:60%;
-    transition:0.2s ease;
+    transition:0.1s ease;
     border-radius: 10px;
 }
 
@@ -175,6 +178,12 @@ nav{
     height:100px;
 }
 
+#cart-items-list{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 
 #cart-items-list table{
     width:100%;
@@ -199,4 +208,22 @@ nav{
     cursor: pointer;
 }
 
+#empty-cart{
+    width:50%;
+    opacity:30%;
+}
 
+#goto-shop-btn{
+    height:50px;
+    background-color: #333;
+    color:white;
+    text-transform: uppercase;
+    border:none;
+    padding:10px 20px;
+    position:absolute;
+    letter-spacing: 1px;
+    font-weight: 300;
+    font-size: 1rem;
+    top:50%;
+    cursor: pointer;
+}
