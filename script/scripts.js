@@ -72,9 +72,13 @@ const displayItems = () => {
 document.addEventListener("load", displayItems());
 
 const displayCart = () => {
+  myCart = myCart.filter((element) => element.count != 0);
+  // console.log(fil);
+
   let total = 0;
+
   myCart.forEach((element) => {
-    total += (element.count*element.price);
+    total += element.count * element.price;
   });
 
   document.getElementById("overlay").style = "display:block";
@@ -82,37 +86,62 @@ const displayCart = () => {
   document.getElementById("mycart").style = "display:flex";
   console.log(myCart);
 
-  // 
-  // if (myCart.length==0){
-  //   document.getElementById("cart-items-list").innerHTML="Nothing to show"
-  // }
+  //
+  displayTable();
+  
+};
 
-  // else{
+//cart tables
+const displayTable = ()=>{
+  if (myCart.length > 0) {
     document.getElementById("cartTable").innerHTML =
-    `<tr><th>Photo</th><th>Item</th><th>Quantity</th><th>Rate</th><th>Total</th> </tr>` +
-    myCart
-      .map(
-        (val) =>
-          `<tr>
+      `<tr><th>Photo</th><th>Item</th><th>Quantity</th><th>Rate</th><th>Total</th> </tr>` +
+      myCart
+        .map(
+          (val) =>
+            `<tr>
   <td><img src="${val.img}" alt=""></td>
   <td>${val.desc}</td>
-  <td>${val.count} </td>
+  <td><i class="fa fa-minus" onclick="decreaseCount(${val.id})"></i>${
+              val.count
+            }<i class="fa fa-plus" onclick="increaseCount(${val.id})"></i></td>
   <td>$${val.price}</td>
   <td>$${val.price * val.count}</td>
 </tr>`
-      )
-      .join("");
+        )
+        .join("");
 
-  document.getElementById(
-    "cartTable"
-  ).innerHTML += `<tr id="total-row"><td></td><td>total</td><td>$${total}</td></tr>`;
-};
-  // }
-
-  
-// 
+    document.getElementById(
+      "cartTable"
+    ).innerHTML += `<tr id="total-row"><td></td><td>total</td><td>$${total}</td></tr>`;
+  } else {
+    document.getElementById("cart-items-list").innerHTML = "Nothing to show";
+  }
+}
 
 const closeCart = () => {
   document.getElementById("mycart").style = "display:none";
   document.getElementById("overlay").style = "display:none";
+};
+
+
+
+// increase decrease count
+
+const decreaseCount = (id) => {
+  myCart.forEach((element) => {
+    if (element.id == id) {
+      element.count--;
+    }
+  });
+  displayCart();
+};
+
+const increaseCount = (id) => {
+  myCart.forEach((element) => {
+    if (element.id == id) {
+      element.count++;
+    }
+  });
+  displayCart();
 };

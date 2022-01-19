@@ -2,6 +2,8 @@
     box-sizing: border-box;
     font-family: 'Lato', sans-serif;
 }
+
+
 body{
     margin:0;
 
@@ -176,14 +178,25 @@ nav{
 
 #cart-items-list table{
     width:100%;
+    text-align: center;
 }
 
 #cart-items-list table tr td img{
     height:100px;
+    margin:5px;
 }
 
 #total-row{
     font-weight: bold;
     text-transform: uppercase;
 }
+
+#cartTable tr td i{
+    background-color: #333;
+    color:white;
+    padding: 4px;
+    margin:0 20px;
+    cursor: pointer;
+}
+
 
