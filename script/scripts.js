@@ -22,16 +22,24 @@ const showcase = [
     price: 800,
   },
 ];
+
 const clickAddToCart = (id) => {
   // display number of cart items
-  let myItems = myCart.length;
-  document.getElementById("itemCount").innerHTML = myItems + 1;
+
+  // let myItems = myCart.length;
+  // document.getElementById("itemCount").innerHTML = myItems;
+
   //push selected item to the cart array
   showcase.forEach((element) => {
-    if (element.id == id) {
+    if (element.id == id && element.count == 0) {
       myCart.push(element);
+      element.count++;
+      // console.log(element.count);
+    } else if (element.id == id && element.count > 0) {
+      element.count++;
     }
   });
+
   //   console.log(myCart);
 };
 
@@ -39,6 +47,7 @@ const clickAddToCart = (id) => {
 const displayItems = () => {
   showcase.forEach((element) => {
     element.id = id;
+    element.count = 0;
     id++;
   });
   //   console.log(showcase);
@@ -65,7 +74,7 @@ document.addEventListener("load", displayItems());
 const displayCart = () => {
   let total = 0;
   myCart.forEach((element) => {
-    total += element.price;
+    total += (element.count*element.price);
   });
 
   document.getElementById("overlay").style = "display:block";
@@ -73,21 +82,35 @@ const displayCart = () => {
   document.getElementById("mycart").style = "display:flex";
   console.log(myCart);
 
-  document.getElementById("cartTable").innerHTML = myCart
-    .map(
-      (val) =>
-        `<tr>
+  // 
+  // if (myCart.length==0){
+  //   document.getElementById("cart-items-list").innerHTML="Nothing to show"
+  // }
+
+  // else{
+    document.getElementById("cartTable").innerHTML =
+    `<tr><th>Photo</th><th>Item</th><th>Quantity</th><th>Rate</th><th>Total</th> </tr>` +
+    myCart
+      .map(
+        (val) =>
+          `<tr>
   <td><img src="${val.img}" alt=""></td>
   <td>${val.desc}</td>
+  <td>${val.count} </td>
   <td>$${val.price}</td>
+  <td>$${val.price * val.count}</td>
 </tr>`
-    )
-    .join("");
+      )
+      .join("");
 
   document.getElementById(
     "cartTable"
   ).innerHTML += `<tr id="total-row"><td></td><td>total</td><td>$${total}</td></tr>`;
 };
+  // }
+
+  
+// 
 
 const closeCart = () => {
   document.getElementById("mycart").style = "display:none";
