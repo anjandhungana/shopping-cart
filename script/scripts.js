@@ -1,5 +1,7 @@
 var myCart = [];
 let id = 1;
+
+
 const showcase = [
   {
     img: "./assets/product-img/shoes1.jpg",
@@ -22,6 +24,52 @@ const showcase = [
     price: 800,
   },
 ];
+
+const toggleBtn = () =>{
+  if (document.querySelector('.addItems').classList.contains('d-none')){
+    displayAdd();
+  }
+  else{
+    hideAdd();
+  }
+}
+
+const displayAdd = () =>{
+  document.querySelector('.add-icon').classList.add('add-icon-animate')
+  document.querySelector('.addItems').classList.remove('d-none');
+  document.querySelector('.addItems').classList.add('d-flex');
+
+}
+
+const hideAdd = () =>{
+  document.querySelector('.add-icon').classList.remove('add-icon-animate')
+
+  document.querySelector('.addItems').classList.add('d-none');
+  document.querySelector('.addItems').classList.remove('d-flex');
+}
+
+const addToShop = ()=>{
+  let itemName = document.getElementById('shop-item-name');
+  let itemPrice = document.getElementById('shop-item-price');
+  let itemPhoto = document.getElementById('shop-item-photo');
+
+  newlyadded = {"img":itemPhoto.value, "desc":itemName.value, "price":itemPrice.value};
+ showcase.push(newlyadded);
+ 
+ itemName.value='';
+ itemPrice.value='';
+ itemPhoto.value='';
+ 
+ displayItems();
+
+
+}
+
+
+
+
+
+
 
 const clickAddToCart = (id) => {
   //toaster animation
