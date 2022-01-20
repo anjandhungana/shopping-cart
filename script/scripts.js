@@ -24,23 +24,21 @@ const showcase = [
 ];
 
 const clickAddToCart = (id) => {
-  // display number of cart items
-
-  // let myItems = myCart.length;
-  // document.getElementById("itemCount").innerHTML = myItems;
+  //toaster animation
+  document.querySelector(".toaster").classList.add("toaster-animation");
+  setTimeout(() => {
+    document.querySelector(".toaster").classList.remove("toaster-animation");
+  }, 500);
 
   //push selected item to the cart array
   showcase.forEach((element) => {
     if (element.id == id && element.count == 0) {
       myCart.push(element);
       element.count++;
-      // console.log(element.count);
     } else if (element.id == id && element.count > 0) {
       element.count++;
     }
   });
-
-  //   console.log(myCart);
 };
 
 //DISPLAY ITEMS
@@ -50,7 +48,6 @@ const displayItems = () => {
     element.count = 0;
     id++;
   });
-  //   console.log(showcase);
   document.getElementById("item-container").innerHTML = showcase
     .map(
       (value) => `<div class="item-card">
@@ -73,7 +70,6 @@ document.addEventListener("load", displayItems());
 
 const displayCart = () => {
   myCart = myCart.filter((element) => element.count != 0);
-  // console.log(fil);
 
   let total = 0;
 
@@ -88,7 +84,7 @@ const displayCart = () => {
 
   //
 
-  if (myCart.length>0) {
+  if (myCart.length > 0) {
     document.getElementById("cart-items-list").innerHTML =
       `<table id="cartTable"><tr><th>Photo</th><th>Item</th><th>Quantity</th><th>Rate</th><th>Total</th> </tr>` +
       myCart
@@ -109,13 +105,11 @@ const displayCart = () => {
     document.getElementById(
       "cartTable"
     ).innerHTML += `<tr id="total-row"><td></td><td>total</td><td>$${total}</td></tr></table>`;
-    document.querySelector('#mycart h1').innerHTML = 'Your Cart';
-
-  } 
-  else {
-    document.querySelector('#mycart h1').innerHTML = 'Your Cart is Empty'
-    document.getElementById("cart-items-list").innerHTML = "<img src='./assets/cart-empty.png' id='empty-cart'/><button id='goto-shop-btn' onclick='closeCart()'>Go to the Shop</button>";
-
+    document.querySelector("#mycart h1").innerHTML = "Your Cart";
+  } else {
+    document.querySelector("#mycart h1").innerHTML = "Your Cart is Empty!";
+    document.getElementById("cart-items-list").innerHTML =
+      "<img src='./assets/cart-empty.png' id='empty-cart'/><button id='goto-shop-btn' onclick='closeCart()'>Go to the Shop</button>";
   }
 };
 
@@ -127,7 +121,6 @@ const closeCart = () => {
 };
 
 // increase decrease count
-
 const decreaseCount = (id) => {
   myCart.forEach((element) => {
     if (element.id == id) {

@@ -18,28 +18,26 @@
     />
   </head>
   <body>
-    <div id="overlay">
+    <div class="toaster">
+      <p>Item added to the Cart</p>
     </div>
-    <div id="mycart">
-        <h3 onclick="closeCart()">X</h3>
-        <h1>Shopping Cart</h1>
-        <div id="cart-items-list">
-            <!-- <div class="cart-item">
-                <img src="./assets/product-img/shoes1.jpg" alt="">
-                <p>Jordan</p>
-                <p>$900</p>
-                <p>quantity</p>
-            </div> -->
-            <table id="cartTable">
-            </table>
-            <div class="no-items-info">
+    <div id="overlay"></div>
 
-            </div>
-        </div>
-  
+    <div id="mycart">
+      <h3 onclick="closeCart()">X</h3>
+      <h1>Shopping Cart</h1>
+      <div id="cart-items-list">
+        <table id="cartTable"></table>
+        <div class="no-items-info"></div>
+      </div>
     </div>
     <nav>
-      <img src="./assets/logo2.png" class="logo" alt="" onclick="displayItems()"/>
+      <img
+        src="./assets/logo2.png"
+        class="logo"
+        alt=""
+        onclick="displayItems()"
+      />
       <ul class="navlinks">
         <li>Home</li>
         <li>About</li>
@@ -47,20 +45,7 @@
         <li><p id="itemCount"></p></li>
       </ul>
     </nav>
-    <div class="item-container" id="item-container">
-      <!-- <div class="item-card">
-        <div class="card-img">
-          <img src="./assets/product-img/shoes1.jpg" alt="" />
-        </div>
-        <div class="item-description">
-          <h4>Nike Air Limited Edition</h4>
-          <p>$250</p>
-          <button class="addtocart" onclick="clickAddToCart(this)">
-            Add To Cart
-          </button>
-        </div>
-      </div> -->
-    </div>
+    <div class="item-container" id="item-container"></div>
   </body>
   <script src="./script/scripts.js"></script>
 </html>

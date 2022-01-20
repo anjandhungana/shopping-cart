@@ -9,7 +9,6 @@
 
 body{
     margin:0;
-
 }
 nav{
     height:10vh;
@@ -226,4 +225,36 @@ nav{
     font-size: 1rem;
     top:50%;
     cursor: pointer;
+    transition:0.2s ease-in-out;
+}
+
+#goto-shop-btn:hover{
+    border-radius:0 0 15px 0;
+    background-color: #222;
+}
+
+.toaster{
+    position:absolute;
+    left:40%;
+    top:3%;
+    height:40px;
+    /* width:20%; */
+    font-size: 0.8rem;;
+    background-color: rgba(101, 255, 137, 0.5);
+    color:white;
+    opacity:0;
+    transform:scale(90%);
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding:10px 20px;
+    border-radius: 15px;
+    text-transform: uppercase;
+    transition:0.2s ease;
+}
+
+.toaster-animation{
+    transform: scale(1);
+    opacity:1;
 }
