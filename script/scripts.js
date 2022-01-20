@@ -134,18 +134,19 @@ const displayCart = () => {
 
   if (myCart.length > 0) {
     document.getElementById("cart-items-list").innerHTML =
-      `<table id="cartTable"><tr><th>Photo</th><th>Item</th><th>Quantity</th><th>Rate</th><th>Total</th> </tr>` +
+      `<table id="cartTable"><tr><th>Photo</th><th>Item</th><th>Quantity</th><th>Rate</th><th>Total</th> <th></th></tr>` +
       myCart
         .map(
           (val) =>
             `<tr>
   <td><img src="${val.img}" alt=""></td>
   <td>${val.desc}</td>
-  <td><i class="fa fa-minus" onclick="decreaseCount(${val.id})"></i>${
+  <td><i class="fa fa-minus countChanger" onclick="decreaseCount(${val.id})"></i>${
               val.count
-            }<i class="fa fa-plus" onclick="increaseCount(${val.id})"></i></td>
+            }<i class="fa fa-plus countChanger" onclick="increaseCount(${val.id})"></i></td>
   <td>$${val.price}</td>
   <td>$${val.price * val.count}</td>
+  <td><i class="fa fa-trash cart-trash" onclick="trashCartItem(${val.id})"></i></td>
 </tr>`
         )
         .join("");
@@ -186,3 +187,8 @@ const increaseCount = (id) => {
   });
   displayCart();
 };
+
+const trashCartItem = (id)=>{
+  myCart =  myCart.filter((val)=>val.id!=id);
+  displayCart();
+}

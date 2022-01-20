@@ -154,6 +154,7 @@ nav{
 .item-description button{
     height:30px;
     border:none;
+    cursor:pointer;
     /* border:1px solid white;; */
     /* background:none; */
     text-transform: uppercase;
@@ -234,12 +235,19 @@ nav{
     text-transform: uppercase;
 }
 
-#cartTable tr td i{
+.countChanger{
     background-color: #333;
     color:white;
     padding: 4px;
     margin:0 20px;
     cursor: pointer;
+}
+
+.cart-trash{
+    cursor:pointer;
+}
+.cart-trash:hover{
+    color:rgb(94, 15, 15);
 }
 
 #empty-cart{
